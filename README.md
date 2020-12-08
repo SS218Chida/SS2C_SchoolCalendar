@@ -73,12 +73,15 @@ FirebaseAuthの作成
 
 DBの接続・表示・追加作業
 DBのサーバ・テーブル作成
+目標達成率 50% (´・ω・`)
 
 桑原美優
 
 index.htmlとuser_create.htmlのレイアウト作成
 user_setting.phpの作成途中
+目標達成率 20%(´・ω・`) 
 
 岩本ルイ
 
 FirebaseAuthと戦い中
+目標達成率　80%
