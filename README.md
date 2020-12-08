@@ -68,3 +68,17 @@ FirebaseAuthの作成
 岩本：FirebaseAuthの完成（バグを治す）
 桑原：レイアウト系の基盤完成　DBの補佐　
 その他：カレンダーコードの解析
+
+千田一翔
+
+DBの接続・表示・追加作業
+DBのサーバ・テーブル作成
+
+桑原美優
+
+index.htmlとuser_create.htmlのレイアウト作成
+user_setting.phpの作成途中
+
+岩本ルイ
+
+FirebaseAuthと戦い中
