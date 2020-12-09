@@ -85,3 +85,11 @@ user_setting.phpの作成途中
 
 FirebaseAuthと戦い中
 目標達成率　80%
+
+2020年12月09日
+
+今日の目標
+
+千田：DBの構築（結合テストDBの）
+桑原：レイアウトの続き
+岩本：CloudFireStoreの構築
