@@ -93,3 +93,7 @@ FirebaseAuthと戦い中
 千田：DBの構築（結合テストDBの）カレンダーコード解析
 桑原：レイアウトの続き
 岩本：CloudFireStoreの構築
+
+桑原未優
+user_setting.phpのレイアウト作成
+phpファイルでのダイアログ表示
