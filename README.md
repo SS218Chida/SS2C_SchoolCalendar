@@ -127,5 +127,9 @@ DBの構築は完成（WBSDBは除く）
 進捗率50%
 
 桑原美優
+user_setting.php：ダイアログ以外のレイアウト完成
+subjectClass_setting：レイアウト完成
+wbs_home.php：作成中
+進捗率35%
 
 岩本ルイ
