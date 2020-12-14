@@ -133,3 +133,7 @@ wbs_home.php：作成中
 進捗率35%
 
 岩本ルイ
+
+index.htmlとcreate_user.htmlの値がfirestoreに保存されないから
+次回終わるようにしたいです
+進捗率：60%
