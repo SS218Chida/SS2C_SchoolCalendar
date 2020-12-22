@@ -3,6 +3,15 @@
 <!--
 レイアウト：https://qiita.com/chousensha01/items/ed29dd22a022aed058d9
 -->
+<!--
+チェックボックス：
+□無し
+□科目名１
+という表を作成して解決した
+
+作成ボタン押した後ダイアログか何か欲しいかも
+-->
+
 <html>
 	<head>
 	<meta charset="UTF-8">
@@ -15,7 +24,7 @@
 		/* Form Layout */
 		.form-wrapper {
 			background: #fafafa;
-			margin: 3em auto;
+			margin: 0 auto;
 			padding: 0 1em;
 			max-width: 85%;
 		}
@@ -46,45 +55,39 @@
 
 		.button_wrapper {
 			text-align: center;
+			clear: both;
 		}
-		
-		.btn{
+
+		.btn {
 			width: 100px;
 		}
-		
+
+		.radio2 {
+			float: left;
+		}
 	</style>
 </head>
 
 
 
 <body>
+	<A href="index.html">←</A>
 	<h1>ユーザ作成</h1>
 	<div class="form-wrapper">
 		<form class="contact" action="index.html" method="post">
 
 			<dl>
 				<!--それぞれ入力してもらうとこ-->
-				<div class="innn">
-					<dt>ユーザネーム</dt>
-					<dd><input type="text" name="name" class="name input1"></dd>
-				</div>
-				<div class="innn">
+				<dt>ユーザネーム</dt>
+				<dd><input type="text" name="name" class="name input1"></dd>
 				<dt>メールアドレス</dt>
 				<dd><input type="email" name="email" class="email input1"></dd>
-				</div>
-				<div class="innn">
 				<dt>パスワード</dt>
 				<dd><input type="password" name="pass" class="pass input1"></dd>
-				</div>
-				<div class="innn">
 				<dt>パスワード確認</dt>
 				<dd><input type="password" name="pass" class="pass input1"></dd>
-				</div>
-				<div class="innn">
 				<!--クラスを選択するとこ-->
 				<dt>クラス選択</dt>
-				</div>
-				<div class="innn">
 				<dd>
 					<!--プルダウンの値入力するとこ-->
 					<select class="type input1" name="type">
@@ -93,34 +96,39 @@
 						<option value="その他お問い合わせ">その他お問い合わせ</option>
 					</select>
 				</dd>
-				</div>
-				<div class="innn">
+
 				<!--科目を選択するとこ-->
 				<dt>科目選択</dt>
 				<dd>
-					<!--チェックボックス-->
-					<input type="checkbox" name="subject" value="無し" checked="" 　class="checkbox">無し
-					<input type="checkbox" name="subject" value="科目" class="checkbox">科目１
+					<table align="left" class="checktbl">
+						<thead>
+						</thead>
+						<tbody>
+							<tr>
+								<th><input type="checkbox" name="subject" value="無し" 　class="checkbox" checked></th>
+								<td>無し</td>
+							</tr>
+							<tr>
+								<th><input type="checkbox" name="subject" value="科目名1" 　class="checkbox"></th>
+								<td>科目名1</td>
+							</tr>
+						</tbody>
+					</table>
 				</dd>
-				</div>
-				<div class="innn">
+
 
 				<!--先生or生徒　選択するとこ-->
 				<dt>あなたはどちらですか？</dt>
-				<dd>
+				<dd class="radio2">
 					<input type="radio" name="contact" value="生徒" checked="" class="radio">生徒
 					<input type="radio" name="contact" value="先生" class="radio">先生
 				</dd>
-				</div>
-				<!--WBSの備考に使えそう-->
-				<!--
-        <dt>メッセージ</dt>
-        <dd><textarea name="message" class="message"></textarea></dd>
--->
 			</dl>
+
+			<!--	作成、キャンセルボタン		-->
 			<div class="button_wrapper">
-				<button type="submit" class="btn">作成</button>
-				<button type="submit" class="btn">キャンセル</button>
+				<button type="submit" class="btn" onclick="location.href='./index.html'">作成</button>
+				<button type="submit" class="btn" onclick="location.href='./index.html'">キャンセル</button>
 			</div>
 		</form>
 	</div>
@@ -129,5 +137,4 @@
 
 
 
-</body>
-</html>
+</body></html>

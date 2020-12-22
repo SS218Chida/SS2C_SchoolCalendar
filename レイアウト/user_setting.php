@@ -7,13 +7,12 @@ phpでhtmlを書く： https://techacademy.jp/magazine/19156
 レイアウト：https://qiita.com/chousensha01/items/ed29dd22a022aed058d9
 -->
 
-<!--チェックボックスの見た目はあとで
-縦並びにすると一番上が少し左にずれて見える
-今：<div class="check2">がないと□科目が横並びになる
+<!--
 
-ダイアログも後回し
-今：一つずつなら入力できる
-ダイアログ表示までこぎつけたぞい😏
+settingが動作する方
+こっちはダイアログ試すようのベース
+
+確定ボタン押したらカレンダー画面に遷移するようにした。でも、元々話し合ってたのでは画面遷移ないボタンだから画面遷移なくしてもいいよ😎
 
 -->
 <html>
@@ -66,10 +65,6 @@ phpでhtmlを書く： https://techacademy.jp/magazine/19156
 			flex-direction: column;
 		}
 
-		.check2 {
-			/*			display: flex;*/
-		}
-
 		.input1 {
 			width: 50%;
 		}
@@ -80,10 +75,12 @@ phpでhtmlを書く： https://techacademy.jp/magazine/19156
 
 		.button_wrapper1 {
 			text-align: right;
+			clear: both;
 		}
 
 		.button_wrapper2 {
 			text-align: left;
+			clear: both;
 		}
 
 		.btn {
@@ -94,32 +91,38 @@ phpでhtmlを書く： https://techacademy.jp/magazine/19156
 			width: 170px;
 		}
 
+		.radio2 {
+			float: left;
+		}
+
 	</style>
 </head>
 
 
 
 <body>
+	<A href="calendar_home.php">←</A>
 	<h1>ユーザネームかユーザID</h1>
 	<div class="form-wrapper">
-		<form class="contact" action="index.html" method="post">
+<!--		<form class="contact" action="index.html" method="post">-->
+		<form class="contact" method="post">
 
 			<dl>
-				<div class="innn">
-					<dt1><button type="button" class="btn1">クラス・科目を追加する</button></dt1>
+				<div>
+					<dt1><button type="button" class="btn1" onclick="location.href='./subjectClass_setting.php'">クラス・科目を追加する</button></dt1>
 					<dd><br></dd>
 				</div>
 
-				<div class="innn">
+				<div>
 					<dt1><input type="button" id="button_02" class="btn1" value="パスワードを変更"></dt1>
 					<dd><br></dd>
 				</div>
 
-				<div class="innn">
+				<div>
 					<!--クラスを選択するとこ-->
 					<dt>クラス選択</dt>
 				</div>
-				<div class="innn">
+				<div>
 					<dd>
 						<!--プルダウンの値入力するとこ-->
 						<select class="type input1" name="type">
@@ -129,74 +132,48 @@ phpでhtmlを書く： https://techacademy.jp/magazine/19156
 						</select>
 					</dd>
 				</div>
-				<div class="innn">
+				<div>
 					<!--科目を選択するとこ-->
-					<dt>科目選択</dt>
-					<div class="check-wrapper">
-						<dd>
-							<!--チェックボックス-->
-							<div class="check2"><input type="checkbox" name="subject" value="無し" checked="" 　class="checkbox">無し</div>
-							<div class="check2"><input type="checkbox" name="subject" value="科目" class="checkbox">科目１</div>
-							<div class="check2"><input type="checkbox" name="subject" value="科目" class="checkbox">科目１</div>
-						</dd>
-					</div>
+				<dt>科目選択</dt>
+				<dd>
+					<table align="left" class="checktbl">
+						<thead>
+						</thead>
+						<tbody>
+							<tr>
+								<th><input type="checkbox" name="subject" value="無し" 　class="checkbox" checked></th>
+								<td>無し</td>
+							</tr>
+							<tr>
+								<th><input type="checkbox" name="subject" value="科目名1" 　class="checkbox"></th>
+								<td>科目名1</td>
+							</tr>
+						</tbody>
+					</table>
+				</dd>
 				</div>
-				<div class="innn">
+				
+				<div>
 
 					<!--先生or生徒　選択するとこ-->
 					<dt>あなたはどちらですか？</dt>
-					<dd>
+					<dd class="radio2">
 						<input type="radio" name="contact" value="生徒" checked="" class="radio">生徒
 						<input type="radio" name="contact" value="先生" class="radio">先生
 					</dd>
 				</div>
-				<!--WBSの備考に使えそう-->
-				<!--
-        <dt>メッセージ</dt>
-        <dd><textarea name="message" class="message"></textarea></dd>
--->
 			</dl>
+			
 			<div class="button_wrapper1">
-				<button type="submit" class="btn">確定</button></div>
+<!--		type=submit だと画面遷移しなかったけど、SQLとかしだいでは変えてもいいよ😎		-->
+				<button type="button" class="btn" onclick="location.href='./calendar_home.php'">確定</button></div>
 			<div class="button_wrapper2">
-				<button type="button" class="btn">ログアウト</button>
+				<button type="button" class="btn" onclick="location.href='./index.html'">ログアウト</button>
 			</div>
 		</form>
 	</div>
+
 	
-
-	<script type="text/javascript">
-<!--
-// 匿名関数内で実行
-(function (){
-
-	// ID 属性からエレメントを取得する
-	var input_button = document.getElementById("button_02");
-	var input_message = document.getElementById("input_02_message");
-	var input_default = document.getElementById("input_02_default");
-	var input_return = document.getElementById("input_02_return");
-
-	// ------------------------------------------------------------
-	// クリックした時に実行されるイベント
-	// ------------------------------------------------------------
-	input_button.onclick = function (){
-
-		// 入力欄付きのダイアログボックスを表示する
-//		var result = prompt(input_message.value,input_default.value);
-//
-//		input_return.value = result;
-		
-		var value=prompt("現在のパスワード");
-//        document.write("お疲れ様です、"+value+"さん。");
-		var value=prompt("新しいパスワード");
-//        document.write("お疲れ様です、"+value+"さん。");
-		var value=prompt("新しいパスワード確認欄");
-//        document.write("お疲れ様です、"+value+"さん。");
-	};
-
-})();
-//-->
-</script>
 	
 
 

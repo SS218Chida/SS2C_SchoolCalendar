@@ -60,7 +60,7 @@
 <body>
 	<A href="user_setting.php">←</A>
 	<div class="form-wrapper">
-		<form class="contact" action="index.html" method="post">
+		<form class="contact" action="user_setting.php" method="post">
 
 			<dl>
 				<!--クラス追加-->
