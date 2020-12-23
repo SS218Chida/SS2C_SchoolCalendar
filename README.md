@@ -231,3 +231,9 @@ schedule_setting2.php：レイアウト完成
 
 岩本ルイ
 events.jsonとevents-for-resources.json終り
+
+2020年12月23日
+
+千田：カレンダー解析 DBを完璧
+桑原：レイアウト全部完成
+岩本：カレンダー解析
