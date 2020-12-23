@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <!--WBS作成画面-->
 
-<!--table.php 移植した　動くけど完璧じゃない
-＋ボタンの下の一行見えないようにしたい
-
-・148行目：class=add_row
-↓思いついた方法2つ
-・行の複製のもとになるものの指定方法を変える
-・指定方法はそのままで複製後に見えるようにする
--->
-
 <!--white-space:nowrap;			/*セル内の改行を禁止する*/-->
 
 <html>
@@ -71,12 +62,6 @@
 			margin: 5px auto;
 		}
 		
-		<!--	ないと＋ボタンの下に入力欄が見える	-->
-        .hide {
-            display: none;
-/*			visibility:hidden;*/
-        }
-		
 		.sakujo{
 			border: none;
 			text-align: center;
@@ -129,19 +114,11 @@
 			</thead>
     <tbody id="params">
 		
-<!--	最初に作ってた表の行	-->
-<!--
-		<tr>
-			<td contenteditable=true></td>
-			<td contenteditable=true></td>
-			<td contenteditable=true></td>
-			<td contenteditable=true></td>
-			<td contenteditable=true></td>
-			<td contenteditable=true colspan="3"></td>
-		</tr>
--->
-		
-		<tr class="hide" style="display: none;">
+		<!--template-->
+<!--	ここないと動かない	
+	ここが＋ボタン押したときの複製もと
+-->	
+		<tr class="hide">
         <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
         <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
         <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
@@ -152,28 +129,10 @@
     </tr>
 		
 		<!--	ここ消すと＋ボタンがなくなる	-->
-<!--
+		
     <tr class="add_row"
-        onclick="let node=this.nextElementSibling.cloneNode(true);node.removeAttribute('id');node.classList.remove('hide');this.parentNode.insertBefore(node,this)">
--->
-    <tr class="add_row"
-        onclick="let node=this.nextElementSibling.cloneNode(true);node.removeAttribute('id');node.classList.remove('hide');this.parentNode.insertBefore(node,this)">
+        onclick="let node=this.previousElementSibling.cloneNode(true);node.removeAttribute('id');node.classList.remove('hide');this.parentNode.insertBefore(node,this)">
         <td colspan="8" style="text-align: center" class="plus"><i class="fas fa-plus"></i></td>
-    </tr>
-
-    <!--template-->
-<!--	ここないと動かない	
-	ここが＋ボタン押したときの複製もと
--->
-    <tr class="hide">
-<!--    <tr class="hide" style="display: none;" >-->
-        <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
-        <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
-        <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
-        <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
-        <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
-        <td colspan="3"><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
-        <td onclick="this.parentNode.outerHTML = ''"  class="sakujo"><i class="fas fa-ban"></i></td>
     </tr>
     </tbody>
 	</table>
