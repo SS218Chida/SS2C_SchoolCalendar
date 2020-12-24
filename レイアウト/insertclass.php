@@ -2,6 +2,36 @@
 //subjectClass_setting.phpからクラス追加ボタンが押されたときの処理
 session_start();
 
+// エラー表示をonにする
+error_reporting(-1);
+ini_set("display_errors", 1);
+
+// 各種、値の設定
+$server_name = 'mysql149.phy.lolipop.lan';
+$user_name = 'LAA1210935';
+$password = 'tridentss2c';
+$database_name = 'LAA1210935-sukukare';
+$charset = 'utf8'; // 文字コード：MySQLのバージョンが適切なら「utf8mb4」のほうがよりよいが、一端
+
+// XXX 一端「おまじない」だと思ってください
+$opt['PDO::ATTR_EMULATE_PREPARES'] = false;
+
+// 接続に必要な文字列を合成します
+$dsn = "mysql:host={$server_name};dbname={$database_name};charset={$charset}";
+
+// 接続処理
+try {
+    // データベースに接続
+    $dbh = new PDO($dsn, $user_name, $password, $opt);
+} catch (PDOException $e) {
+    // エラー内容を表示する
+    var_dump($e->getMessage()); 
+    exit; // プログラムを終了させる
+}
+// 接続に成功したら「成功した」旨を表示
+echo '接続に成功しました<br>';
+var_dump($dbh);
+
 //データベースをPDOで接続
 $pdo = new pdo("mysql:host=localhost;dbname=test","root","");
 //$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
