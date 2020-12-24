@@ -5,6 +5,12 @@ phpでhtmlを書く： https://techacademy.jp/magazine/19156
 <!DOCTYPE html>
 <!--
 レイアウト：https://qiita.com/chousensha01/items/ed29dd22a022aed058d9
+
+要素の表示非表示
+https://itsakura.com/javascript-display
+
+divをスクロールしても動かないようにする(.passChange)
+https://proengineer.internous.co.jp/content/columnfeature/12366
 -->
 
 <!--
@@ -94,13 +100,72 @@ settingが動作する方
 		.radio2 {
 			float: left;
 		}
+		
+		.passChange{
+			background-color: azure;
+/*			background-color: rgba(1,1,1,1);*/
+			width: 80%;
+			position: fixed;
+			top: 30%;
+			left: 10%;
+		}
+		
+		.contact1{
+			border: solid;
+			background-color: whitesmoke;
+		}
+		
+		.button_wrapper{
+			text-align: center;
+		}
 
 	</style>
+	
 </head>
 
 
 
 <body>
+	
+	<div id="p1" class="passChange">
+		<form class="contact1" method="post">
+
+			<dl>
+				<!--それぞれ入力してもらうとこ-->
+				<dt>パスワード</dt>
+				<dd><input type="password" name="pass" class="pass input1"></dd>
+				<dt>新しいパスワード</dt>
+				<dd><input type="password" name="pass" class="pass input1"></dd>
+				<dt>新しいパスワード確認</dt>
+				<dd><input type="password" name="pass" class="pass input1"></dd>
+
+			</dl>
+
+			<!--	作成、キャンセルボタン		-->
+			<div class="button_wrapper">
+				<button type="submit" class="btn" onclick="clickBtn1()">作成</button>
+				<button type="submit" class="btn" onclick="clickBtn1()">キャンセル</button>
+			</div>
+		</form>
+	</div>
+
+<script>
+//初期表示は非表示
+document.getElementById("p1").style.display ="none";
+
+function clickBtn1(){
+	const p1 = document.getElementById("p1");
+
+	if(p1.style.display=="block"){
+		// noneで非表示
+		p1.style.display ="none";
+	}else{
+		// blockで表示
+		p1.style.display ="block";
+	}
+}
+</script>
+	
 	<A href="calendar_home.php">←</A>
 	<h1>ユーザネームかユーザID</h1>
 	<div class="form-wrapper">
@@ -114,7 +179,7 @@ settingが動作する方
 				</div>
 
 				<div>
-					<dt1><input type="button" id="button_02" class="btn1" value="パスワードを変更"></dt1>
+					<dt1><input type="button" class="btn1" value="パスワードを変更" onclick="clickBtn1()"></dt1>
 					<dd><br></dd>
 				</div>
 
