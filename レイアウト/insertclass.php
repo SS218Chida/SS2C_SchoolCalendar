@@ -22,7 +22,7 @@ $dsn = "mysql:host={$server_name};dbname={$database_name};charset={$charset}";
 // 接続処理
 try {
     // データベースに接続
-    $dbh = new PDO($dsn, $user_name, $password, $opt);
+    $pdo = new PDO($dsn, $user_name, $password, $opt);
 } catch (PDOException $e) {
     // エラー内容を表示する
     var_dump($e->getMessage()); 
@@ -32,9 +32,9 @@ try {
 echo '接続に成功しました<br>';
 var_dump($dbh);
 
-//データベースをPDOで接続
-$pdo = new pdo("mysql:host=localhost;dbname=test","root","");
-//$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+// //データベースをPDOで接続
+// $pdo = new pdo("mysql:host=localhost;dbname=test","root","");
+// //$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 header("Content-type: text/plain;charset=UTF-8");
 //データ取りだし
