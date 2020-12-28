@@ -12,7 +12,7 @@ $subject1 = $_POST['subject1'];
 $subject2 = $_POST['subject2'];
 
 //SQL作成
-$sqlsubject = $pdo->prepare("SELECT MAX(subject_id) FROM subjecttbl");
+$sqlsubject = $pdo->prepare("SELECT MAX(subject_id) FROM subject_tbl");
 
 //クエリ実行
 $id1 = $sqlsubject->execute();
@@ -24,7 +24,7 @@ if($subject1 === "" && $subject2 === ""){//どちらも入力されない
     while ($row = $sqlsubject->fetch()){
     $subject_id1 = $row[0] + 1;
     //SQL文を作成
-    $stmt = $pdo->prepare('INSERT INTO subjecttbl(subject_id,subject) VALUES(:subject_id1,:subject1)');
+    $stmt = $pdo->prepare('INSERT INTO subject_tbl(subject_id,subject) VALUES(:subject_id1,:subject1)');
     $stmt->bindValue(':subject_id1',$subject_id1,PDO::PARAM_INT);
     $stmt->bindValue(':subject1',$subject1,PDO::PARAM_STR);
     //クエリ実行
@@ -37,7 +37,7 @@ if($subject1 === "" && $subject2 === ""){//どちらも入力されない
     $subject_id1 = $row[0] + 1;
     $subject_id2 = $row[0] + 2;
     //SQL文を作成
-    $stmt = $pdo->prepare('INSERT INTO subjecttbl(subject_id,subject) VALUES(:subject_id1,:subject1)
+    $stmt = $pdo->prepare('INSERT INTO subject_tbl(subject_id,subject) VALUES(:subject_id1,:subject1)
     ,(:subject_id2,:subject2)');
     $stmt->bindValue(':subject_id1',$subject_id1,PDO::PARAM_INT);
     $stmt->bindValue(':subject1',$subject1,PDO::PARAM_STR);

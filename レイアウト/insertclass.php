@@ -42,7 +42,7 @@ $class1 = $_POST['class1'];
 $class2 = $_POST['class2'];
 
 //SQL作成
-$sqlclass = $pdo->prepare("SELECT MAX(class_id) FROM classtbl");
+$sqlclass = $pdo->prepare("SELECT MAX(class_id) FROM class_tbl");
 
 //クエリ実行
 $id1 = $sqlclass->execute();
@@ -54,7 +54,7 @@ if($class1 === "" && $class2 === ""){//どちらも入力されない
     while ($row = $sqlclass->fetch()){
     $class_id1 = $row[0] + 1;
     //SQL文を作成
-    $stmt = $pdo->prepare('INSERT INTO classtbl(class_id,class) VALUES(:class_id1,:class1)');
+    $stmt = $pdo->prepare('INSERT INTO class_tbl(class_id,class) VALUES(:class_id1,:class1)');
     $stmt->bindValue(':class_id1',$class_id1,PDO::PARAM_INT);
     $stmt->bindValue(':class1',$class1,PDO::PARAM_STR);
     //クエリ実行
@@ -66,7 +66,7 @@ if($class1 === "" && $class2 === ""){//どちらも入力されない
     $class_id1 = $row[0] + 1;
     $class_id2 = $row[0] + 2;
     //SQL文を作成
-    $stmt = $pdo->prepare('INSERT INTO classtbl(class_id,class) VALUES(:class_id1,:class1)
+    $stmt = $pdo->prepare('INSERT INTO class_tbl(class_id,class) VALUES(:class_id1,:class1)
     ,(:class_id2,:class2)');
     $stmt->bindValue(':class_id1',$class_id1,PDO::PARAM_INT);
     $stmt->bindValue(':class1',$class1,PDO::PARAM_STR);
