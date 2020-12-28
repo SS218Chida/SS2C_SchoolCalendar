@@ -1,10 +1,5 @@
 <?php
-//subjectClass_setting.phpからクラス追加ボタンが押されたときの処理
 session_start();
-
-// エラー表示をonにする
-error_reporting(-1);
-ini_set("display_errors", 1);
 
 // 各種、値の設定
 $server_name = 'mysql149.phy.lolipop.lan';
@@ -29,8 +24,7 @@ try {
     exit; // プログラムを終了させる
 }
 // 接続に成功したら「成功した」旨を表示
-echo '接続に成功しました<br>';
-var_dump($dbh);
+echo '接続に成功しました';
 
 // //データベースをPDOで接続
 // $pdo = new pdo("mysql:host=localhost;dbname=test","root","");
@@ -40,6 +34,8 @@ header("Content-type: text/plain;charset=UTF-8");
 //データ取りだし
 $class1 = $_POST['class1'];
 $class2 = $_POST['class2'];
+echo $class1;
+echo $class2;
 
 //SQL作成
 $sqlclass = $pdo->prepare("SELECT MAX(class_id) FROM class_tbl");
@@ -48,7 +44,6 @@ $sqlclass = $pdo->prepare("SELECT MAX(class_id) FROM class_tbl");
 $id1 = $sqlclass->execute();
 
 if($class1 === "" && $class2 === ""){//どちらも入力されない
-    break;
 }else if($class1 !== "" && $class2 === ""){//class1だけが入力されてる
     //class1追加処理
     while ($row = $sqlclass->fetch()){
