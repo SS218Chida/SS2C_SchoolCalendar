@@ -1,3 +1,41 @@
+<?php
+
+// 各種、値の設定
+$server_name = 'mysql149.phy.lolipop.lan';
+$user_name = 'LAA1210935';
+$password = 'tridentss2c';
+$database_name = 'LAA1210935-sukukare';
+$charset = 'utf8'; // 文字コード：MySQLのバージョンが適切なら「utf8mb4」のほうがよりよいが、一端
+
+// XXX 一端「おまじない」だと思ってください
+$opt['PDO::ATTR_EMULATE_PREPARES'] = false;
+
+// 接続に必要な文字列を合成します
+$dsn = "mysql:host={$server_name};dbname={$database_name};charset={$charset}";
+
+// 接続処理
+try {
+    // データベースに接続
+	$pdo = new PDO($dsn, $user_name, $password, $opt);
+	
+	//SQL作成
+	$sql = $pdo->prepare("SELECT class FROM class_tbl");
+
+	//クエリ実行
+	$result = $sql->execute();
+
+	$sql1 = $pdo->prepare("SELECT subject FROM subject_tbl");
+
+	$result1 = $sql1->execute();
+
+} catch (PDOException $e) {
+    // エラー内容を表示する
+    var_dump($e->getMessage()); 
+    exit; // プログラムを終了させる
+}
+
+?>
+
 <!DOCTYPE html>
 <!--WBS作成画面-->
 
@@ -83,16 +121,22 @@
 		<p class="p1">WBSの名前</p>
 		<input type="text" name="WBSname" class="in1">
 		<!--クラス選択-->
-		<select class="type input1" name="type">
+		<select class="type input1" name="class">
 			<option value="クラス選択">クラス選択</option>
-			<option value="講演・メディア出演のご依頼">講演・メディア出演のご依頼</option>
-			<option value="その他お問い合わせ">その他お問い合わせ</option>
+			<?php foreach ($sql as $value) { ?>
+				<option value="<?php echo htmlspecialchars($value["class"], ENT_QUOTES, "UTF-8"); ?>">
+					<?php echo htmlspecialchars($value["class"], ENT_QUOTES, "UTF-8"); ?>
+				</option>
+			<?php } ?>
 		</select>
 		<!--科目選択-->
-		<select class="type input1" name="type">
+		<select class="type input1" name="subject">
 			<option value="科目選択">科目選択</option>
-			<option value="講演・メディア出演のご依頼">講演・メディア出演のご依頼</option>
-			<option value="その他お問い合わせ">その他お問い合わせ</option>
+			<?php foreach ($sql1 as $value) { ?>
+				<option value="<?php echo htmlspecialchars($value["subject"], ENT_QUOTES, "UTF-8"); ?>">
+					<?php echo htmlspecialchars($value["subject"], ENT_QUOTES, "UTF-8"); ?>
+				</option>
+			<?php } ?>
 		</select>
 	</div>
 	
@@ -142,8 +186,36 @@
 
 	<!--＋ボタン　追加するボタン-->
 	<div class="button_wrapper2">
-		<button type="submit" class="btn" onclick="location.href='./wbs_common.php'">追加する</button>
+		<button type="submit" class="btn1" name="btn1" onclick="location.href='./wbs_common.php'">追加する</button>
 	</div>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js">
+    </script>
+    <script>
+	const btn1 = document.getElementById("btn1");
+	//wbs情報を送信
+	btn1.addEventListener('click', function() {
+            // ここに#buttonをクリックしたら発生させる処理を記述する
+            var class_name1 = document.getElementById("class1").value;
+            var class_name2 = document.getElementById("class2").value;
+            var param = {
+                "class1": class_name1,
+                "class2": class_name2,
+            }
+            $.post({
+                url: 'insertclass.php', //送り先
+                data: param,
+                success: function(data) {
+                    alert('変更が完了しました');
+                    console.log(data);
+                },
+                error: function(data) {
+                    alert('変更に失敗しました');
+                    console.log(data);
+                }
+            });
+        });
+	</script>
 
 </body>
 
