@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+
+	<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js"></script>
+
+	<style>
+		h1 {
+			text-align: center;
+		}
+
+		/* Form Layout */
+		.form-wrapper {
+			background: #fafafa;
+			margin: 3em auto;
+			padding: 0 1em;
+			max-width: 85%;
+		}
+
+		form {
+			background-color: #eaeaea;
+			padding: 30px 50px;
+		}
+
+		form dl dt {
+			width: 200px;
+			padding: 10px 0;
+			float: left;
+			clear: both;
+		}
+
+		form dl dd {
+			padding: 10px 0;
+		}
+
+		.input1 {
+			width: 50%;
+		}
+
+		.checkbox {
+			width: 20px;
+		}
+
+		.button_wrapper {
+			text-align: center;
+		}
+
+		.btn {
+			width: 100px;
+		}
+
+	</style>
+</head>
+
+<body onload="onGet()">
+	<h1>ユーザ作成</h1>
+	<div class="form-wrapper">
+		<dl>
+			<div class="innn">
+				<dt>ユーザネーム</dt>
+				<dd><input type="text" id="name" name="name" class="name input1"></dd>
+			</div>
+			<div class="innn">
+				<dt>メールアドレス</dt>
+				<dd><input type="email" id="mail" name="email" class="email input1"></dd>
+			</div>
+			<div>
+				<dt>パスワード</dt>
+				<dd><input type="password" id="pass1" name="pass" class="pass input1"></dd>
+			</div>
+			<div>
+				<dt>パスワード確認</dt>
+				<dd><input type="password" id="pass2" name="pass" class="pass input1"></dd>
+			</div>
+			<div class="innn">
+				<!--クラスを選択するとこ-->
+				<dt>クラス選択</dt>
+			</div>
+			<div class="innn">
+				<dd>
+					<!--プルダウンの値入力するとこ-->
+					<select class="type input1" name="type">
+						<option value="撮影のご依頼">撮影のご依頼</option>
+						<option value="講演・メディア出演のご依頼">講演・メディア出演のご依頼</option>
+						<option value="その他お問い合わせ">その他お問い合わせ</option>
+					</select>
+				</dd>
+			</div>
+			<div class="innn">
+				<!--科目を選択するとこ-->
+				<dt>科目選択</dt>
+				<dd>
+					<!--チェックボックス-->
+					<input type="checkbox" name="subject" value="無し" checked="" 　class="checkbox">無し
+					<input type="checkbox" name="subject" value="科目" class="checkbox">科目１
+				</dd>
+			</div>
+			<div class="innn">
+
+				<!--先生or生徒　選択するとこ-->
+				<dt>あなたはどちらですか？</dt>
+				<dd>
+					<input type="radio" name="contact" value="生徒" checked="" class="radio">生徒
+					<input type="radio" name="contact" value="先生" class="radio">先生
+				</dd>
+			</div>
+			<!--WBSの備考に使えそう-->
+			<!--
+        <dt>メッセージ</dt>
+        <dd><textarea name="message" class="message"></textarea></dd>
+-->
+		</dl>
+		<div class="button_wrapper">
+			<button type="submit" class="btn" onclick="doSet()">作成</button>
+			<button type="submit" class="btn">キャンセル</button>
+		</div>
+
+
+
+	</div>
+		<!--
+    <table>
+      <tr>
+        <th>ID</th>
+        <td><input type="text" id="id" /></td>
+      </tr>
+      <tr>
+        <th>ユーザ名</th>
+        <td><input type="text" id="name" /></td>
+      </tr>
+      <tr>
+        <th>E-mail</th>
+        <td><input type="text" id="mail" /></td>
+      </tr>
+      <tr>
+        <th>パスワード</th>
+        <td><input type="text" id="pass1" /></td>
+      </tr>
+      <tr>
+        <th>パスワード確認</th>
+        <td><input type="text" id="pass2" /></td>
+      </tr>
+      <td><button onclick="doSet()">Set</button></td>
+    </table>
+-->
+		<!--    <ol id="list"></ol>-->
+		<script src="./user_create.js"></script>
+</body>
+
+</html>
