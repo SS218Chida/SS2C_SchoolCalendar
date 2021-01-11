@@ -141,7 +141,7 @@ try {
 	</div>
 	
 <!--	表	-->
-	<table align="center"　class="table table-striped" id="target">
+	<!-- <table align="center"　class="table table-striped" id="target">
 		<thead>
 		<tr>
 			<th rowspan="2">作業名</th>
@@ -156,13 +156,13 @@ try {
 			<th>終了時間</th>
 		</tr>
 			</thead>
-    <tbody id="params">
+    <tbody id="params"> -->
 		
 		<!--template-->
 <!--	ここないと動かない	
 	ここが＋ボタン押したときの複製もと
 -->	
-		<tr class="hide">
+		<!-- <tr class="hide">
         <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
         <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
         <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
@@ -170,24 +170,88 @@ try {
         <td><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
         <td colspan="3"><input style="width: 100%;outline: 0;border: 0px;background: transparent;"></td>
         <td onclick="this.parentNode.outerHTML = ''"  class="sakujo"><i class="fas fa-ban"></i></td>
-    </tr>
+    </tr> -->
 		
 		<!--	ここ消すと＋ボタンがなくなる	-->
 		
-    <tr class="add_row"
+    <!-- <tr class="add_row"
         onclick="let node=this.previousElementSibling.cloneNode(true);node.removeAttribute('id');node.classList.remove('hide');this.parentNode.insertBefore(node,this)">
         <td colspan="8" style="text-align: center" class="plus"><i class="fas fa-plus"></i></td>
     </tr>
     </tbody>
-	</table>
+	</table> -->
 	
+	<form id="frm" name="frm" method="GET" action="">
+		<div>新しい行を追加：<input type="button" id="add" name="add" value="追加" onclick="appendRow()"></div>
+		<table align="center"　class="table table-striped" id="tbl">
+			<!-- <tr>
+				<th style="text-align:right; width:40px;">行</th>
+				<th style="">プロジェクト</th>
+				<th style="">タスク</th>
+				<th style="">開始日</th>
+				<th style="">終了日</th>
+				<th style="">終了時間</th>
+				<th style="background-color: green; width:40px;">補足</th>
+				<th style="background-color: red; width:40px;">補足</th>
+			</tr> -->
+			<tr>
+				<th rowspan="2">作業名</th>
+				<th rowspan="2">タスク</th>
+				<th colspan="3">期限</th>
+				<th rowspan="2" colspan="3">補足</th>
+				<th rowspan="2"　 class="sakujo">削除</th>
+			</tr>
+			<tr>
+				<th>開始日</th>
+				<th>終了日</th>
+				<th>終了時間</th>
+			</tr>
+			<!-- <tr>
+				
+				<td style="text-align:right; width:40px;"><span class="seqno">1</span></td>
+				
+				<td style=""><input class="inpproj" type="text" id="projtxt1" name="projtxt1" value="プロジェクトを追加してみよう" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="inptask" type="text" id="tasktxt1" name="tasktxt1" value="タスクを追加してみよう" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="startdate" type="text" id="sdatetxt1" name="sdatetxt1" value="開始日" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="enddate" type="text" id="edatetxt1" name="edatetxt1" value="終了日" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="endtime" type="text" id="etimetxt1" name="etimetxt1" value="終了時間" size="30" readonly style="border:none"></td>
+				
+				<td style="background-color: green; width:40px;"><input class="edtbtn" type="button" id="edtBtn1" value="編集" onclick="editRow(this)"></td>
+				
+				<td style="background-color: red; width:40px;"><input class="delbtn" type="button" id="delBtn1" value="削除" onclick="deleteRow(this)"></td>
+				
+			</tr> -->
+			<!-- <tr>
+				
+				<td rowspan="2"><input class="inpproj" type="text" id="projtxt1" name="projtxt1" value="作業名を追加" size="20" readonly style="border:none"></td>
+				
+				<td rowspan="2"><input class="inptask" type="text" id="tasktxt1" name="tasktxt1" value="タスクを追加" size="20" readonly style="border:none"></td>
+				
+				<td style=""><input class="startdate" type="text" id="sdatetxt1" name="sdatetxt1" value="開始日" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="enddate" type="text" id="edatetxt1" name="edatetxt1" value="終了日" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="endtime" type="text" id="etimetxt1" name="etimetxt1" value="終了時間" size="30" readonly style="border:none"></td>
+				
+				<td style="background-color: green; width:40px;"><input class="edtbtn" type="button" id="edtBtn1" value="編集" onclick="editRow(this)"></td>
+				
+				<td style="background-color: red; width:40px;"><input class="delbtn" type="button" id="delBtn1" value="削除" onclick="deleteRow(this)"></td>
+				
+			</tr> -->
+		</table>
+		<input type="submit" value="送信">
+	</form>
 
-
+	<script src="./table.js"></script>
 
 	<!--＋ボタン　追加するボタン-->
-	<div class="button_wrapper2">
+	<!-- <div class="button_wrapper2">
 		<button type="submit" class="btn" onclick="location.href='./wbs_common.php'">追加する</button>
-	</div>
+	</div> -->
 
 </body>
 

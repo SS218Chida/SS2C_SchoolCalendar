@@ -1,3 +1,45 @@
+<!--http://localhost/schoolCurry-->
+<!--
+phpでhtmlを書く： https://techacademy.jp/magazine/19156
+-->
+
+<?php
+
+// 各種、値の設定
+$server_name = 'mysql149.phy.lolipop.lan';
+$user_name = 'LAA1210935';
+$password = 'tridentss2c';
+$database_name = 'LAA1210935-sukukare';
+$charset = 'utf8'; // 文字コード：MySQLのバージョンが適切なら「utf8mb4」のほうがよりよいが、一端
+
+// XXX 一端「おまじない」だと思ってください
+$opt['PDO::ATTR_EMULATE_PREPARES'] = false;
+
+// 接続に必要な文字列を合成します
+$dsn = "mysql:host={$server_name};dbname={$database_name};charset={$charset}";
+
+// 接続処理
+try {
+    // データベースに接続
+	$pdo = new PDO($dsn, $user_name, $password, $opt);
+	
+	//SQL作成
+	$sql = $pdo->prepare("SELECT class FROM class_tbl");
+
+	//クエリ実行
+	$result = $sql->execute();
+
+	$sql1 = $pdo->prepare("SELECT subject FROM subject_tbl");
+
+	$result1 = $sql1->execute();
+
+} catch (PDOException $e) {
+    // エラー内容を表示する
+    var_dump($e->getMessage()); 
+    exit; // プログラムを終了させる
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -84,10 +126,12 @@
 			<div class="innn">
 				<dd>
 					<!--プルダウンの値入力するとこ-->
-					<select class="type input1" name="type">
-						<option value="撮影のご依頼">撮影のご依頼</option>
-						<option value="講演・メディア出演のご依頼">講演・メディア出演のご依頼</option>
-						<option value="その他お問い合わせ">その他お問い合わせ</option>
+					<select name="class">
+						<?php foreach ($sql as $value) { ?>
+							<option value="<?php echo htmlspecialchars($value["class"], ENT_QUOTES, "UTF-8"); ?>">
+								<?php echo htmlspecialchars($value["class"], ENT_QUOTES, "UTF-8"); ?>
+							</option>
+						<?php } ?>
 					</select>
 				</dd>
 			</div>
@@ -96,8 +140,14 @@
 				<dt>科目選択</dt>
 				<dd>
 					<!--チェックボックス-->
-					<input type="checkbox" name="subject" value="無し" checked="" 　class="checkbox">無し
-					<input type="checkbox" name="subject" value="科目" class="checkbox">科目１
+					<?php foreach ($sql1 as $value) { ?>
+									<tr>
+										<th><input type="checkbox" name="subject" 
+											value="<?php echo htmlspecialchars($value["subject"], ENT_QUOTES, "UTF-8"); ?>"></th>
+											<td><?php echo htmlspecialchars($value["subject"], ENT_QUOTES, "UTF-8"); ?></td>
+										</input>
+									</tr>
+							<?php } ?>
 				</dd>
 			</div>
 			<div class="innn">
