@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>テーブル練習</title>
+</head>
+
+<body>
+	<form id="frm" name="frm" method="GET" action="">
+		<div>新しい行を追加：<input type="button" id="add" name="add" value="追加" onclick="appendRow()"></div>
+		<table border="1" id="tbl">
+			<tr>
+				<th style="text-align:right; width:40px;">行</th>
+				<th style="">プロジェクト</th>
+				<th style="">タスク</th>
+				<th style="">開始日</th>
+				<th style="">終了日</th>
+				<th style="">終了時間</th>
+				<th style="background-color: green; width:40px;">補足</th>
+				<th style="background-color: red; width:40px;">補足</th>
+			</tr>
+			<tr>
+				
+				<td style="text-align:right; width:40px;"><span class="seqno">1</span></td>
+				
+				<td style=""><input class="inpproj" type="text" id="projtxt1" name="projtxt1" value="プロジェクトを追加してみよう" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="inptask" type="text" id="tasktxt1" name="tasktxt1" value="タスクを追加してみよう" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="startdate" type="text" id="sdatetxt1" name="sdatetxt1" value="開始日" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="enddate" type="text" id="edatetxt1" name="edatetxt1" value="終了日" size="30" readonly style="border:none"></td>
+				
+				<td style=""><input class="endtime" type="text" id="etimetxt1" name="etimetxt1" value="終了時間" size="30" readonly style="border:none"></td>
+				
+				<td style="background-color: green; width:40px;"><input class="edtbtn" type="button" id="edtBtn1" value="編集" onclick="editRow(this)"></td>
+				
+				<td style="background-color: red; width:40px;"><input class="delbtn" type="button" id="delBtn1" value="削除" onclick="deleteRow(this)"></td>
+				
+			</tr>
+		</table>
+		<input type="submit" value="送信">
+	</form>
+</body>
+
+	<script src="./table.js"></script>
+</html>
