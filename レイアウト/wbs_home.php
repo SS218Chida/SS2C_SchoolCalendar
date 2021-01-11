@@ -1,7 +1,5 @@
 <?php
 
-
-
 // 各種、値の設定
 $server_name = 'mysql149.phy.lolipop.lan';
 $user_name = 'LAA1210935';
