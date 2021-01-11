@@ -1,4 +1,3 @@
-
 var nm = null;
 var ml = null;
 var ps1 = null;
@@ -11,10 +10,10 @@ var firebaseConfig = {
     databaseURL: "https://s192054auth.firebaseio.com",
     projectId: "s192054auth",
     storageBucket: "s192054auth.appspot.com",
-    messagingSenderId: "550035762728",
-    appId: "1:550035762728:web:6635392359a62d5da6cf1d",
-    measurementId: "G-SGPBWSMK6Y"
-};
+   	messagingSenderId: "550035762728",
+   	appId: "1:550035762728:web:9353c2e9fa9b792fa6cf1d",
+   	measurementId: "G-J0T9R4JFST"	
+}
 
 try {
     firebase.initializeApp(firebaseConfig);
@@ -33,7 +32,7 @@ function onGet() {
     ps2 = document.querySelector('#pass2');
     msg = document.querySelector('#msg');
 
-};
+}
 
 coll.onSnapshot((querySnapshot) => {
     let result = '';
@@ -57,12 +56,14 @@ function doSet() {
 		console.log("username: " + nm.value);
 		console.log("emailaddress: " + ml.value);
 		console.log("password: " + ps1.value);
+		alert('ユーザ作成できました');
+		location.replace("index.html");
         })
         .catch(function (error) {
             console.error(error);
         });
 	}else{
-		console.log("パスワードが一致してない")
+		console.log("パスワードが一致してない");
 	}
     
 }

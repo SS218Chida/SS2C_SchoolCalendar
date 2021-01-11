@@ -8,13 +8,13 @@ var searchusername = null;
 
 var firebaseConfig = {
 	apiKey: "AIzaSyDp12ZN5QLEeO437TaecR-aV1RPnedbxEY",
-	authDomain: "s192054auth.firebaseapp.com",
-	databaseURL: "https://s192054auth.firebaseio.com",
-	projectId: "s192054auth",
-	storageBucket: "s192054auth.appspot.com",
-	messagingSenderId: "550035762728",
-	appId: "1:550035762728:web:6635392359a62d5da6cf1d",
-	measurementId: "G-SGPBWSMK6Y"
+    	authDomain: "s192054auth.firebaseapp.com",
+    	databaseURL: "https://s192054auth.firebaseio.com",
+    	projectId: "s192054auth",
+    	storageBucket: "s192054auth.appspot.com",
+   	messagingSenderId: "550035762728",
+   	appId: "1:550035762728:web:9353c2e9fa9b792fa6cf1d",
+   	measurementId: "G-J0T9R4JFST"	
 };
 
 try {
@@ -84,8 +84,10 @@ function doSet() {
 					//URL切り替え
 					//windows.location.replace("https://www.....");
 
+					location.replace("calendar_home.php");
+
 				} else {
-					console.log("No such document!")
+					console.log("No such document!");
 				}
 
 			});
@@ -93,7 +95,4 @@ function doSet() {
 		.catch(function (error) {
 			console.log("Error getting documents: ", error);
 		});
-
-
-
 }
