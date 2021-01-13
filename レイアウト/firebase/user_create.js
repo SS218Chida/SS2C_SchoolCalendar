@@ -52,7 +52,7 @@ function doSet() {
         password1: ps1.value
     })
         .then(function () {
-            console.log(ml + "に保存成功");
+        console.log(ml + "に保存成功");
 		console.log("username: " + nm.value);
 		console.log("emailaddress: " + ml.value);
 		console.log("password: " + ps1.value);

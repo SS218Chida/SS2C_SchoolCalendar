@@ -49,6 +49,7 @@ try {
 	<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js"></script>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
 
 	<style>
 		h1 {
@@ -145,7 +146,6 @@ try {
 										<th><input type="checkbox" name="subject" 
 											value="<?php echo htmlspecialchars($value["subject"], ENT_QUOTES, "UTF-8"); ?>"></th>
 											<td><?php echo htmlspecialchars($value["subject"], ENT_QUOTES, "UTF-8"); ?></td>
-										</input>
 									</tr>
 							<?php } ?>
 				</dd>
@@ -166,7 +166,7 @@ try {
 -->
 		</dl>
 		<div class="button_wrapper">
-			<button type="submit" class="btn" onclick="doSet()">作成</button>
+			<button type="submit" id="btn1" class="btn" onclick="doSet()">作成</button>
 			<button type="submit" class="btn" onclick="location.href='index.html'">キャンセル</button>
 		</div>
 
@@ -198,8 +198,10 @@ try {
       <td><button onclick="doSet()">Set</button></td>
     </table>
 -->
+
 		<!--    <ol id="list"></ol>-->
 		<script src="user_create.js"></script>
+
 </body>
 
 </html>
